@@ -1,0 +1,28 @@
+{
+  "name": "server-urls",
+  "version": "1.0.0",
+  "description": "user-urls app server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhudaz/server-urls.git"
+  },
+  "author": "Jaime Andres Velez Rojas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhudaz/server-urls/issues"
+  },
+  "homepage": "https://github.com/jhudaz/server-urls#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "pg": "^7.8.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.42.0"
+  }
+}

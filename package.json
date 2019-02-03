@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "",
-    "start": "nodemon index"
+    "start": "nodemon index",
+    "migrate":"sequelize db:migrate",
+    "migrate undo":"sequelize db:migrate:undo",
+    "create seed":"sequelize seed:generate --name demo-user",
+    "seed":"sequelize db:seed:all"
   },
   "repository": {
     "type": "git",

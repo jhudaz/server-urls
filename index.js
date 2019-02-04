@@ -32,7 +32,8 @@ app.post('/user', async (req, res) => {
   });
   if (singleUser.length > 0) {
     res.json({
-      success: true
+      success: true,
+      token: singleUser[0].id
     })
   } else {
     res.json({
@@ -40,12 +41,8 @@ app.post('/user', async (req, res) => {
     })
   }
 })
-app.get('/user', async (req, res) => {
-  const urls = await models.Urls.findAll({
-    where: {
-      userId: ''
-    }
-  });
-  res.json(urls);
+app.post('/getCurrentUser', async (req, res) => {
+  const currentUser = await models.User.findById(req.body.id);
+  res.json(currentUser);
 })
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const Sequelize = require('sequelize');
 const app = express();
 const port = process.env.PORT || 4000;
@@ -12,7 +12,7 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, pr
 });
 
 app.use(cors())
-// app.use(bodyParser())
+app.use(bodyParser.json());
 
 sequelize
   .authenticate()
@@ -23,22 +23,29 @@ sequelize
     console.error('Unable to connect to the database:', err);
   });
 
-app.get('/user', async(req, res) => {
-  const singleUser =  await models.User.findAll({
-    where:{
-      email:req.query.email,
-      password: req.query.password
+app.post('/user', async (req, res) => {
+  const singleUser = await models.User.findAll({
+    where: {
+      email: req.body.email,
+      password: req.body.password
     }
   });
-  if(singleUser.length>0){
+  if (singleUser.length > 0) {
     res.json({
-      success:true
+      success: true
     })
-  }else{
+  } else {
     res.json({
-      success:false
+      success: false
     })
   }
 })
-
+app.get('/user', async (req, res) => {
+  const urls = await models.Urls.findAll({
+    where: {
+      userId:''
+    }
+  });
+  res.json(urls);
+})
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

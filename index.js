@@ -56,8 +56,23 @@ app.get('/getUserUrls', async (req, res) => {
   const userUrls = await models.Urls.findAll({
     where: {
       UserId: req.query.userId
-    }
+    },
+    order: [
+      ['id','ASC']
+    ]
   })
   res.json(userUrls);
 })
+app.put('/updateScore', async (req, res) => {
+  const updateScore = await models.Urls.update({
+    score: req.body.score
+  },
+    {
+      where: {
+        id: req.body.id
+      }
+    })
+  res.json(updateScore);
+})
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

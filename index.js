@@ -11,10 +11,8 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, pr
   dialect: process.env.DIALECT
 });
 
-
 app.use(cors())
 // app.use(bodyParser())
-
 
 sequelize
   .authenticate()
@@ -32,7 +30,15 @@ app.get('/user', async(req, res) => {
       password: req.query.password
     }
   });
-  res.json(singleUser)
+  if(singleUser.length>0){
+    res.json({
+      success:true
+    })
+  }else{
+    res.json({
+      success:false
+    })
+  }
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

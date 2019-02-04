@@ -42,7 +42,12 @@ app.post('/user', async (req, res) => {
   }
 })
 app.post('/getCurrentUser', async (req, res) => {
-  const currentUser = await models.User.findById(req.body.id);
+  const currentUser = await models.User.findOne({
+    where:{
+      id:req.body.id
+    },
+    attributes: ['id', 'email']
+  });
   res.json(currentUser);
 })
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

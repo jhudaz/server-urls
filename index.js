@@ -43,7 +43,7 @@ app.post('/user', async (req, res) => {
 app.get('/user', async (req, res) => {
   const urls = await models.Urls.findAll({
     where: {
-      userId:''
+      userId: ''
     }
   });
   res.json(urls);

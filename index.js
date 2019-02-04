@@ -22,7 +22,7 @@ sequelize
   .catch(err => {
     console.error('Unable to connect to the database:', err);
   });
-
+//endpoint to get the user by email and password
 app.post('/user', async (req, res) => {
   const singleUser = await models.User.findAll({
     where: {
@@ -41,13 +41,23 @@ app.post('/user', async (req, res) => {
     })
   }
 })
+//endpoint to get the user info
 app.post('/getCurrentUser', async (req, res) => {
   const currentUser = await models.User.findOne({
-    where:{
-      id:req.body.id
+    where: {
+      id: req.body.id
     },
     attributes: ['id', 'email']
   });
   res.json(currentUser);
+})
+//endoint 
+app.get('/getUserUrls', async (req, res) => {
+  const userUrls = await models.Urls.findAll({
+    where: {
+      UserId: req.query.userId
+    }
+  })
+  res.json(userUrls);
 })
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

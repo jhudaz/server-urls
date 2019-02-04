@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Urls = sequelize.define('Urls', {
     url: DataTypes.STRING,
-    userId: DataTypes.INTEGER,
+    UserId: DataTypes.INTEGER,
     score: DataTypes.INTEGER
   }, {});
   Urls.associate = function(models) {

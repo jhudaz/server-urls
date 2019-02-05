@@ -51,18 +51,19 @@ app.post('/getCurrentUser', async (req, res) => {
   });
   res.json(currentUser);
 })
-//endoint 
+//endoint to get the user urls
 app.get('/getUserUrls', async (req, res) => {
   const userUrls = await models.Urls.findAll({
     where: {
       UserId: req.query.userId
     },
     order: [
-      ['id','ASC']
+      ['id', 'ASC']
     ]
   })
   res.json(userUrls);
 })
+//endpoint to update the url score
 app.put('/updateScore', async (req, res) => {
   const updateScore = await models.Urls.update({
     score: req.body.score
@@ -73,6 +74,36 @@ app.put('/updateScore', async (req, res) => {
       }
     })
   res.json(updateScore);
+})
+//endpoint to update the url and his score
+app.put('/updateUrl', async (req, res) => {
+  const updateScore = await models.Urls.update({
+    url: req.body.url,
+    score: req.body.score
+  },
+    {
+      where: {
+        id: req.body.id
+      }
+    })
+  res.json(updateScore);
+})
+//endpoint to delete a
+app.delete('/deleteUrl', async (req, res) => {
+  const urlDelete = await models.Urls.destroy({
+    where: {
+      id: req.body.id
+    }
+  })
+  res.json(urlDelete);
+})
+app.post('/newUrl', async (req, res) => {
+  const newUrl = await models.Urls.create({
+    url: req.body.url,
+    UserId: req.body.UserId,
+    score: req.body.score
+  });
+  res.json(newUrl);
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

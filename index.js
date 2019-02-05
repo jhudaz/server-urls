@@ -61,7 +61,7 @@ app.get('/getUserUrls', async (req, res) => {
       ['id', 'ASC']
     ]
   })
-  res.json(userUrls);
+  res.json(userUrls)
 })
 //endpoint to update the url score
 app.put('/updateScore', async (req, res) => {
@@ -73,7 +73,17 @@ app.put('/updateScore', async (req, res) => {
         id: req.body.id
       }
     })
-  res.json(updateScore);
+  res.json(updateScore)
+})
+//endpoint to get the url data
+app.get('/getUrl', async (req, res)=>{
+  const getUrl = await models.Urls.findOne({
+    where: {
+      id: req.query.id
+    },
+    attributes:['url','score']
+  })
+  res.json(getUrl)
 })
 //endpoint to update the url and his score
 app.put('/updateUrl', async (req, res) => {
@@ -88,7 +98,7 @@ app.put('/updateUrl', async (req, res) => {
     })
   res.json(updateScore);
 })
-//endpoint to delete a
+//endpoint to delete a url
 app.delete('/deleteUrl', async (req, res) => {
   const urlDelete = await models.Urls.destroy({
     where: {
@@ -97,6 +107,7 @@ app.delete('/deleteUrl', async (req, res) => {
   })
   res.json(urlDelete);
 })
+//endpoint to create a new url
 app.post('/newUrl', async (req, res) => {
   const newUrl = await models.Urls.create({
     url: req.body.url,

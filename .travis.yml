@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - "8"
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database test;' -U postgres
+  - npm install
+  - npm run migrate:test
+  
+script:
+  - npm test

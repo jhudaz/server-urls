@@ -75,7 +75,7 @@ app.put('/updateScore', async (req, res) => {
     })
   res.json(updateScore)
 })
-//endpoint to get the url data
+//endpoint to get the url data for update
 app.get('/getUrl', async (req, res)=>{
   const getUrl = await models.Urls.findOne({
     where: {

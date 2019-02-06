@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jhudaz/server-urls.svg?branch=master)](https://travis-ci.org/jhudaz/server-urls)
+
 # server-urls
 Author: Jaime Andres Velez Rojas
 

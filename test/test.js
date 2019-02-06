@@ -10,14 +10,14 @@ chai.use(chaiHttp);
 const email = 'prueba@prueba.com';
 const password = '12345';
 
-before(function () {
-  models.User.create({
+before(async () => {
+  await models.User.create({
     email,
     password
   })
 });
-after(function () {
-  models.User.destroy({
+after(async () => {
+  await models.User.destroy({
     where: {
       email
     }

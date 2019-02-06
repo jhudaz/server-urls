@@ -8,7 +8,8 @@ const port = process.env.PORT || 4000;
 const models = require('./models/index');
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
   host: process.env.DB_HOSTNAME,
-  dialect: process.env.DIALECT
+  dialect: process.env.DIALECT,
+  logging: process.env.NODE_ENV === "development"
 });
 
 app.use(cors())
@@ -77,12 +78,12 @@ app.put('/updateScore', async (req, res) => {
   res.json(updateScore)
 })
 //endpoint to get the url data for update
-app.get('/getUrl', async (req, res)=>{
+app.get('/getUrl', async (req, res) => {
   const getUrl = await models.Urls.findOne({
     where: {
       id: req.query.id
     },
-    attributes:['url','score']
+    attributes: ['url', 'score']
   })
   res.json(getUrl)
 })

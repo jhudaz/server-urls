@@ -4,10 +4,11 @@
   "description": "user-urls app server",
   "main": "index.js",
   "scripts": {
-    "test": "",
+    "test": "NODE_ENV=test mocha --exit",
     "start": "nodemon index",
     "migrate": "sequelize db:migrate",
-    "seed": "sequelize db:seed:all"
+    "seed": "sequelize db:seed:all",
+    "migrate:test": "NODE_ENV=test sequelize db:migrate"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,9 @@
     "sequelize-cli": "^5.4.0"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "mocha": "^5.2.0",
     "nodemon": "^1.18.9"
   }
 }

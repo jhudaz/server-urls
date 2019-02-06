@@ -37,7 +37,8 @@ app.post('/user', async (req, res) => {
     })
   } else {
     res.json({
-      success: false
+      success: false,
+      message: `Sorry, the user doesn't exist, try again`
     })
   }
 })

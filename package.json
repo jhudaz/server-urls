@@ -8,7 +8,8 @@
     "start": "nodemon index",
     "migrate": "sequelize db:migrate",
     "seed": "sequelize db:seed:all",
-    "migrate:test": "NODE_ENV=test sequelize db:migrate"
+    "migrate:test": "NODE_ENV=test sequelize db:migrate",
+    "migrate:production": "NODE_ENV=production sequelize db:migrate"
   },
   "repository": {
     "type": "git",

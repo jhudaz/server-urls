@@ -9,8 +9,8 @@ Description: Express server for the user urls app with conecction to a postgres 
 
 //commands:
 
-run app: npm start
+run app: yarn start
 
-run migration: npm run migrate
+run migration: yarn run migrate
 
-run seeds: npm run seed
+run seeds: yarn run seed

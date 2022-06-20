@@ -9,7 +9,7 @@ Description: Express server for the user urls app with conecction to a postgres 
 
 //commands:
 
-run app: yarn start
+==run app: yarn start==
 
 run migration: yarn run migrate
 
